@@ -26,7 +26,7 @@ public class Insert {
      * 交换数组的元素耗时很大，我们将元素i赋值一份，与前面的元素进行判断，如果满足条件（arr[i] < arr[i-1]）前面的元素就占据元素j原来的位置
      * 如果不满足条件，就将元素放在当前判断的位置,结束本次循环
      * 插入排序可以在第二层循环提前结束
-     * 插入排序在本身近似有序时速度甚至优于logn的算法
+     * 插入排序在本身近似有序时速度甚至优于nlogn的算法
      * @param arr
      * @param n
      */
@@ -34,11 +34,23 @@ public class Insert {
         for (int i=1; i<n; i++) {
             Integer e = arr[i];
             int j; //保存元素e应该插入的位置
-            for (j=i; j>0 && arr[j-1] > arr[e]; j--) {
+            for (j=i; j>0 && arr[j-1] > e; j--) {
                 arr[j] = arr[j-1];
             }
             arr[j] = e;
         }
         return arr;
+    }
+
+    //对arr[l..r]进行排序
+    public static void InsertSort_change(Integer arr [], int l, int r) {
+        for (int i=l+1; i<=r; i++) {
+            Integer e = arr[i];
+            int j; //保存元素e应该插入的位置
+            for (j=i; j>l && arr[j-1] > e; j--) {
+                arr[j] = arr[j-1];
+            }
+            arr[j] = e;
+        }
     }
 }

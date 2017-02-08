@@ -14,7 +14,7 @@ public class Main {
 
     public static void main(String [] args) {
         //数组中元素的个数
-        int n = 10000;
+        int n = 50000;
         //随机
         Integer arr [] = generateRandomArray(n, 0, n);
         //产生近乎有序的数组
@@ -33,16 +33,16 @@ public class Main {
 
         //插入排序
 //        printArray(arr_new, n, "原数组:");
-        testSort("InsertSort", true, arr_new, n);
-        arr_new = Insert.InsertSort(arr_new, n);
-        testSort("InsertSort", false, arr_new, n);
+//        testSort("InsertSort", true, arr_new, n);
+//        arr_new = Insert.InsertSort(arr_new, n);
+//        testSort("InsertSort", false, arr_new, n);
 //        printArray(arr_new, n, "排序后:");
 
         //插入排序改进
 //        printArray(arr_new_change, n, "原数组:");
-        testSort("InsertSort_change", true, arr_new_change, n);
-        arr_new_change = Insert.InsertSort(arr_new_change, n);
-        testSort("InsertSort_change", false, arr_new_change, n);
+        testSort("InsertSort_change", true, arr_new, n);
+        arr_new = Insert.InsertSort_change(arr_new, n);
+        testSort("InsertSort_change", false, arr_new, n);
 //        printArray(arr_new_change, n, "排序后:");
 
         //冒泡排序改进
@@ -56,9 +56,21 @@ public class Main {
 //        testSort("bubbleSort_change", false, arr, n);
 
         //希尔排序
-        testSort("shellSort", true, arr, n);
-        arr = Shell.shellSort(arr, n);
-        testSort("shellSort", false, arr, n);
+//        testSort("shellSort", true, arr, n);
+//        arr = Shell.shellSort(arr, n);
+//        testSort("shellSort", false, arr, n);
+
+
+        //归并排序
+        testSort("mergeSort", true, arr_new_change, n);
+        arr_new_change = Merge.mergeSort(arr_new_change, n);
+        testSort("mergeSort", false, arr_new_change, n);
+
+        //归并排序改进
+        testSort("mergeSort_change", true, arr, n);
+        arr = Merge.mergeSort_change(arr, n);
+        testSort("mergeSort_change", false, arr, n);
+
 
     }
 
