@@ -44,12 +44,7 @@ public class Selection {
         return arr;
     }
 
-    public static double[] swap(double[] arr, int i, int minIndex) {
-        double f = arr[i];
-        arr[i] = arr[minIndex];
-        arr[minIndex] = f;
-        return arr;
-    }
+
 
     public static <T> T[] fun1(T...arg){  // 接收可变参数
         return arg ;            // 返回泛型数组
