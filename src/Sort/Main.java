@@ -16,9 +16,9 @@ public class Main {
         //数组中元素的个数
         int n = 10000;
         //随机
-//        Integer arr [] = generateRandomArray(n, 0, n);
+        Integer arr [] = generateRandomArray(n, 0, n);
         //产生近乎有序的数组
-        Integer arr [] = Utils.generateNearlyOrderedArray(n, 10);
+//        Integer arr [] = Utils.generateNearlyOrderedArray(n, 10);
         //深拷贝
         Integer [] arr_new = copyIntArray(arr);
         //深拷贝2
@@ -26,9 +26,9 @@ public class Main {
 
         //选择排序
 //        printArray(arr, n, "原数组:");
-        testSort("selectionSort", true, arr, n);
-        arr = Selection.selectionSort(arr, n);
-        testSort("selectionSort", false, arr, n);
+//        testSort("selectionSort", true, arr, n);
+//        arr = Selection.selectionSort(arr, n);
+//        testSort("selectionSort", false, arr, n);
 //        printArray(arr, n, "排序后:");
 
         //插入排序
@@ -44,6 +44,21 @@ public class Main {
         arr_new_change = Insert.InsertSort(arr_new_change, n);
         testSort("InsertSort_change", false, arr_new_change, n);
 //        printArray(arr_new_change, n, "排序后:");
+
+        //冒泡排序改进
+//        testSort("bubbleSort", true, arr_new_change, n);
+//        arr_new_change = Bubble.bubbleSort(arr_new_change, n);
+//        testSort("bubbleSort", false, arr_new_change, n);
+
+        //冒泡排序改进
+//        testSort("bubbleSort_change", true, arr, n);
+//        arr = Bubble.bubbleSort_change(arr, n);
+//        testSort("bubbleSort_change", false, arr, n);
+
+        //希尔排序
+        testSort("shellSort", true, arr, n);
+        arr = Shell.shellSort(arr, n);
+        testSort("shellSort", false, arr, n);
 
     }
 
