@@ -14,13 +14,13 @@ public class Main {
 
     public static void main(String [] args) {
         //数组中元素的个数
-        int n = 1000000;
+        int n = 10000;
         //随机
-//        Integer arr [] = generateRandomArray(n, 0, n);
+        Integer arr [] = generateRandomArray(n, 0, n);
         //产生近乎有序的数组
 //        Integer arr [] = Utils.generateNearlyOrderedArray(n, 100);
         //重复值多的数组
-        Integer arr [] = generateRandomArray(n, 0, 10);
+//        Integer arr [] = generateRandomArray(n, 0, 10);
         //深拷贝
         Integer [] arr_new = copyIntArray(arr);
         //深拷贝2
@@ -90,15 +90,19 @@ public class Main {
 //        testSort("quickSort_change", false, arr_new, n);
 
         //双路快速排序
-        testSort("quickSort2", true, arr_new, n);
-        arr_new = Quick.quickSort2(arr_new, n);
-        testSort("quickSort2", false, arr_new, n);
+//        testSort("quickSort2", true, arr_new, n);
+//        arr_new = Quick.quickSort2(arr_new, n);
+//        testSort("quickSort2", false, arr_new, n);
 
         //三路快速排序
         testSort("quickSort3Ways", true, arr_new_change, n);
         arr_new = Quick.quickSort3Ways(arr_new_change, n);
         testSort("quickSort3Ways", false, arr_new_change, n);
 
+        //逆序打印数组
+        Utils.printArray(arr_new_change, n, "数组:");
+        //求第n大元素
+        MaxNum.maxNum(arr, n , 10);
 
     }
 
@@ -121,18 +125,7 @@ public class Main {
         return arr;
     }
 
-    /***
-     * 打印数组
-     * @param arr 数组对象
-     * @param n 数组个数
-     * @param str 打印前面的字符
-     * @param <T>
-     */
-    public static <T> void printArray(T [] arr, int n, String str){
-        for (int i=0; i<n; i++)
-            System.out.print(str + " " + arr[i] + " ");
-        System.out.println();
-    }
+
 
     /**
      * 测试函数的执行时间
