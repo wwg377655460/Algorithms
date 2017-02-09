@@ -31,6 +31,7 @@ public class Quick {
     /**
      * 双路快排
      * 在多种测试用例排序都有很好的效率
+     *
      * @param arr
      * @param n
      * @return
@@ -39,6 +40,60 @@ public class Quick {
         quickSort_stack2(arr, 0, n - 1);
         return arr;
     }
+
+    /**
+     * 三路快速排序
+     * 在数据重复多时三路快速排序效率高
+     * @param arr
+     * @param n
+     * @return
+     */
+    public static Integer[] quickSort3Ways(Integer[] arr, int n) {
+        quickSort_stack3_ways(arr, 0, n - 1);
+        return arr;
+    }
+
+    /**
+     * 将arr[l..r]分成 <v, ==v, >v 三部分
+     * 递归对<v, >v 两部分继续三路快速排序
+     * @param arr
+     * @param l
+     * @param r
+     */
+    private static void quickSort_stack3_ways(Integer[] arr, int l, int r) {
+        if (r - l <= 15) {
+            Insert.InsertSort_change(arr, l, r);
+            return;
+        }
+
+        //partition
+        Main.swap(arr, l, random.nextInt(r - l + 1) + l);//交换到最左侧
+        Integer v = arr[l];
+
+        int lt = l; //arr[l+1...lt] < v
+        int gt = r+1; //arr[gt...r] > v
+        int i = l+1; //arr[lt+1...i) == v
+        while (i < gt) {
+            if (arr[i] < v) {
+                Main.swap(arr, i, lt + 1);
+                lt++;
+                i++;
+            } else if (arr[i] > v){
+                Main.swap(arr, i, gt-1);
+                gt--;
+            } else {
+                i++;
+            }
+        }
+        Main.swap(arr, l, lt);
+        quickSort_stack3_ways(arr, l, lt - 1);
+        quickSort_stack3_ways(arr, gt, r);
+
+
+    }
+
+
+
 
     private static void quickSort_stack2(Integer[] arr, int l, int r) {
         if (l >= r)
@@ -78,7 +133,7 @@ public class Quick {
 
 //        if (l >= r)
 //            return;
-        //数组小时用归并排序
+        //数组小时用插入排序
         if (r - l <= 15) {
             Insert.InsertSort_change(arr, l, r);
             return;

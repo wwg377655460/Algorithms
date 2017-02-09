@@ -16,11 +16,11 @@ public class Main {
         //数组中元素的个数
         int n = 1000000;
         //随机
-        Integer arr [] = generateRandomArray(n, 0, n);
+//        Integer arr [] = generateRandomArray(n, 0, n);
         //产生近乎有序的数组
 //        Integer arr [] = Utils.generateNearlyOrderedArray(n, 100);
         //重复值多的数组
-//        Integer arr [] = generateRandomArray(n, 0, 10);
+        Integer arr [] = generateRandomArray(n, 0, 10);
         //深拷贝
         Integer [] arr_new = copyIntArray(arr);
         //深拷贝2
@@ -64,9 +64,9 @@ public class Main {
 
 
         //归并排序
-        testSort("mergeSort", true, arr_new_change, n);
-        arr_new_change = Merge.mergeSort(arr_new_change, n);
-        testSort("mergeSort", false, arr_new_change, n);
+//        testSort("mergeSort", true, arr_new_change, n);
+//        arr_new_change = Merge.mergeSort(arr_new_change, n);
+//        testSort("mergeSort", false, arr_new_change, n);
 
         //归并排序改进
 //        testSort("mergeSort_change", true, arr, n);
@@ -93,6 +93,11 @@ public class Main {
         testSort("quickSort2", true, arr_new, n);
         arr_new = Quick.quickSort2(arr_new, n);
         testSort("quickSort2", false, arr_new, n);
+
+        //三路快速排序
+        testSort("quickSort3Ways", true, arr_new_change, n);
+        arr_new = Quick.quickSort3Ways(arr_new_change, n);
+        testSort("quickSort3Ways", false, arr_new_change, n);
 
 
     }
