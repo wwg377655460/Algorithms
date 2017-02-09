@@ -14,11 +14,13 @@ public class Main {
 
     public static void main(String [] args) {
         //数组中元素的个数
-        int n = 50000;
+        int n = 1000000;
         //随机
         Integer arr [] = generateRandomArray(n, 0, n);
         //产生近乎有序的数组
-//        Integer arr [] = Utils.generateNearlyOrderedArray(n, 10);
+//        Integer arr [] = Utils.generateNearlyOrderedArray(n, 100);
+        //重复值多的数组
+//        Integer arr [] = generateRandomArray(n, 0, 10);
         //深拷贝
         Integer [] arr_new = copyIntArray(arr);
         //深拷贝2
@@ -40,9 +42,9 @@ public class Main {
 
         //插入排序改进
 //        printArray(arr_new_change, n, "原数组:");
-        testSort("InsertSort_change", true, arr_new, n);
-        arr_new = Insert.InsertSort_change(arr_new, n);
-        testSort("InsertSort_change", false, arr_new, n);
+//        testSort("InsertSort_change", true, arr_new, n);
+//        arr_new = Insert.InsertSort_change(arr_new, n);
+//        testSort("InsertSort_change", false, arr_new, n);
 //        printArray(arr_new_change, n, "排序后:");
 
         //冒泡排序改进
@@ -67,9 +69,30 @@ public class Main {
         testSort("mergeSort", false, arr_new_change, n);
 
         //归并排序改进
-        testSort("mergeSort_change", true, arr, n);
-        arr = Merge.mergeSort_change(arr, n);
-        testSort("mergeSort_change", false, arr, n);
+//        testSort("mergeSort_change", true, arr, n);
+//        arr = Merge.mergeSort_change(arr, n);
+//        testSort("mergeSort_change", false, arr, n);
+
+        //归并排序自底向上
+//        testSort("mergeSortBU", true, arr_new, n);
+//        arr_new = Merge.mergeSortBU(arr_new, n);
+//        testSort("mergeSortBU", false, arr_new, n);
+
+
+        //快速排序
+//        testSort("quickSort", true, arr, n);
+//        arr = Quick.quickSort(arr, n);
+//        testSort("quickSort", false, arr, n);
+
+        //快速排序优化
+//        testSort("quickSort_change", true, arr_new, n);
+//        arr_new = Quick.quickSort_change(arr_new, n);
+//        testSort("quickSort_change", false, arr_new, n);
+
+        //双路快速排序
+        testSort("quickSort2", true, arr_new, n);
+        arr_new = Quick.quickSort2(arr_new, n);
+        testSort("quickSort2", false, arr_new, n);
 
 
     }
@@ -82,6 +105,7 @@ public class Main {
      * @return
      */
     public static Integer [] generateRandomArray(int n, int rangeL, int rangeR) {
+        System.out.println("测试用例为随机数组，长度：" + n + " 范围(" + rangeL + "," + rangeR + ")");
         //判断是否满足条件
         assert rangeL <= rangeR;
         Integer [] arr = new Integer[n];

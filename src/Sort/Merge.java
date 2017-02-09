@@ -15,7 +15,7 @@ public class Merge {
      * @return
      */
     public static Integer[] mergeSort(Integer[] arr, int n) {
-        mergeSortPart(arr, 0, n-1);
+        mergeSortPart(arr, 0, n - 1);
         return arr;
     }
 
@@ -76,6 +76,7 @@ public class Merge {
 
     /***
      * 归并排序优化
+     *
      * @param arr
      * @param n
      * @return
@@ -144,5 +145,33 @@ public class Merge {
                 j++;
             }
         }
+    }
+
+
+    /**
+     * 自底向上的归并排序
+     * 测试mergeSort_change函数用时:33毫秒
+     * 数组排序正确
+     * 测试mergeSortBU函数用时:39毫秒
+     * 数组排序正确
+     * 自顶向下有时要快，但是自底向上排序没有通过索引直接获取元素，所有可用使用nlogn的时间使用链表排序
+     * @param arr
+     * @param n
+     */
+    public static Integer [] mergeSortBU(Integer[] arr, int n) {
+
+        for (int sz = 1; sz <= n; sz += sz) {
+            //i + sz < n, min(i + sz + sz - 1, n-1)处理越界
+            for (int i = 0; i + sz < n; i += sz + sz) {
+                //对arr[i...i+sz-1] 和 arr[i+sz...i+2*sz-1]进行归并
+                mergeAll(arr, i, i + sz - 1, min(i + sz + sz - 1, n-1));
+            }
+        }
+        return arr;
+    }
+
+    //判断两个整形的大小
+    private static int min(int i, int i1) {
+        return i < i1 ? i : i1;
     }
 }

@@ -14,6 +14,7 @@ public class Utils {
      * @return
      */
     public static Integer [] generateNearlyOrderedArray(int n, int swapTimes) {
+        System.out.println("测试用例为近乎有序的数组，长度：" + n + " swapTimes=" + swapTimes);
 
         Integer [] arr = new Integer[n];
         for (int i=0; i<n; i++)
