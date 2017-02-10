@@ -14,7 +14,7 @@ public class Main {
 
     public static void main(String [] args) {
         //数组中元素的个数
-        int n = 10000;
+        int n = 1000000;
         //随机
         Integer arr [] = generateRandomArray(n, 0, n);
         //产生近乎有序的数组
@@ -90,19 +90,34 @@ public class Main {
 //        testSort("quickSort_change", false, arr_new, n);
 
         //双路快速排序
-//        testSort("quickSort2", true, arr_new, n);
-//        arr_new = Quick.quickSort2(arr_new, n);
-//        testSort("quickSort2", false, arr_new, n);
+        testSort("quickSort2", true, arr_new, n);
+        arr_new = Quick.quickSort2(arr_new, n);
+        testSort("quickSort2", false, arr_new, n);
 
         //三路快速排序
-        testSort("quickSort3Ways", true, arr_new_change, n);
-        arr_new = Quick.quickSort3Ways(arr_new_change, n);
-        testSort("quickSort3Ways", false, arr_new_change, n);
+//        testSort("quickSort3Ways", true, arr_new_change, n);
+//        arr_new = Quick.quickSort3Ways(arr_new_change, n);
+//        testSort("quickSort3Ways", false, arr_new_change, n);
 
         //逆序打印数组
-        Utils.printArray(arr_new_change, n, "数组:");
+//        Utils.printArray(arr_new_change, n, "数组:");
         //求第n大元素
-        MaxNum.maxNum(arr, n , 10);
+//        MaxNum.maxNum(arr, n , 10);
+        //堆排序
+//        testSort("heapSort1", true, arr, n);
+//        arr = HeapSort.heapSort1(arr, n);
+//        testSort("heapSort1", false, arr, n);
+
+        //堆排序改进
+        testSort("heapSort2", true, arr_new_change, n);
+        arr_new_change = HeapSort.heapSort2(arr_new_change, n);
+        testSort("heapSort2", false, arr_new_change, n);
+
+        //新的heapsort,不需要额外的空间
+        testSort("heapSort", true, arr, n);
+        arr = HeapSort.heapSort(arr, n);
+        testSort("heapSort", false, arr, n);
+
 
     }
 

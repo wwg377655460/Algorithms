@@ -23,7 +23,7 @@ public class MaxNum {
 
     private static void quickSort(Integer [] arr, int l, int r, int num) {
         if (l == r) {
-            System.out.println("找到第" + num + "大的元素：" + arr[l]);
+            System.out.println("找到第" + (num+1) + "大的元素：" + arr[l]);
             return;
         }
         //partition
@@ -39,7 +39,7 @@ public class MaxNum {
         }
         Main.swap(arr, l, j);
         if (j == num) {
-            System.out.println("找到第" + num + "大的元素：" + v);
+            System.out.println("找到第" + (num+1) + "大的元素：" + v);
             return;
         }else if (j < num){
             quickSort(arr, j + 1, r, num);
